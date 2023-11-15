@@ -193,7 +193,7 @@ const AttendanceHistory = () => {
                 }
               >
                 <td>{emp.emp_id}</td>
-                <td>{emp.name}</td>
+                <td style={{textTransform:"capitalize"}}>{emp.name}</td>
                 <td>{emp.attendance_date ? emp.attendance_date.slice(0, 10) : ''}</td>
                 <td
                   style={{

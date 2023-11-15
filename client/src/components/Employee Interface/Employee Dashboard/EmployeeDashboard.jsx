@@ -83,7 +83,7 @@ export default function EmployeeDashboard() {
         <div className="col-xl-4 col-sm-6 py-2" >
         <Link to={'/empdash/viewProfile'}>
 
-            <div className="card-body bg-primary link" style={{ height: "97%", color: "white", backgroundColor: "#428bca", border:'white 1px solid',borderRadius:'20px' }}>
+            <div className="card-body bg-primary link" style={{ height: "100%", color: "white", backgroundColor: "#428bca", border:'white 1px solid',borderRadius:'20px' }}>
               <div className="rotate">
                 <i class="fa fa-user fa-4x" aria-hidden="true"></i>
               </div>
@@ -98,7 +98,7 @@ export default function EmployeeDashboard() {
               <div className="rotate">
                 <i class="fas fa-chart-bar fa-4x"></i>
               </div>
-              <h3>Performance Score <strong>{((Number(empDashStats.present_count) / 21) * 100).toFixed(2)}</strong></h3>
+              <h3>Performance Score <br/> {((Number(100-(((empDashStats.absent_count) / 22)) * 100))).toFixed(2)}</h3>
             </div>
           </div>
         <div className="col-xl-4 col-sm-6 py-2">
@@ -106,7 +106,7 @@ export default function EmployeeDashboard() {
               <div className="rotate">
                 <i class="fas fa-credit-card fa-4x"></i>
               </div>
-              <h3>Salary/month  <strong>{empStats.netSalary}</strong></h3>
+              <h3>Salary/month  <br/><strong>{empStats.netSalary}</strong></h3>
             </div>
           </div>
         <div className="col-xl-4 col-sm-6 py-2">
@@ -140,11 +140,11 @@ export default function EmployeeDashboard() {
             </Link>
           </div>
         <div className="col-xl-8 col-sm-8 py-2" style={{margin:'auto'}}>
-            <div className="card-body" style={{width: "35rem", textAlign:"center", backgroundColor: '#F6B887', padding:"8px" , fontSize:"10px", margin:'auto', border:'white 1px solid',borderRadius:'20px' }}>
-{salDet.salary_status == "Paid" ? <> <h4 style={{display:'inline'}}>Current Month Salary Status</h4><span style={{marginLeft: "8px", fontSize:'25px'}} className='badge bg-success'>{salDet.salary_status}</span>
-                <h4>Salary Approval Date : <strong>{salDet?.salary_date?.slice(0, 10)}</strong></h4>
-                <h4>Amount Paid : <strong>{salDet.salary_amount}</strong></h4></>
-                : <><h4 style={{display:'inline'}}>Current Month Salary Status</h4><span style={{marginLeft: "8px", fontSize:'25px'}} className='badge bg-danger'>{salDet.salary_status}</span></>}</div>
+            <div className="card-body" style={{width: "35rem", textAlign:"center", backgroundColor: 'white', padding:"4px" , fontSize:"8px", margin:'auto', border:'black 1.5px solid',borderRadius:'20px' }}>
+{salDet.salary_status == "Paid" ? <> <h5 style={{display:'inline'}}>Current Month Salary Status</h5><span style={{marginLeft: "8px", fontSize:'20px'}} className='badge bg-success'>{salDet.salary_status}</span>
+                <h6>Salary Approval Date : <strong>{salDet?.salary_date?.slice(0, 10)}</strong></h6>
+                <h6>Amount Paid : <strong>{salDet.salary_amount}</strong></h6></>
+                : <><h6 style={{display:'inline'}}>Current Month Salary Status</h6><span style={{marginLeft: "8px", fontSize:'20px'}} className='badge bg-danger'>{salDet.salary_status}</span></>}</div>
           </div>
 
       </div>

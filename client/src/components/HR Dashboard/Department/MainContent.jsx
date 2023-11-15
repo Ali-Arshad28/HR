@@ -94,7 +94,7 @@ fetchData()
             <div className="card text-white bg-success h-80"  style={{border:'white 1px solid',borderRadius:'20px'}}>
               <div className="card-body bg-warning" style={{border:'white 1px solid',borderRadius:'20px', backgroundColor: "#428bca" }}>
                 <div className="rotate">
-                  <i className="fa fa-check-circle fa-4x"></i>
+                  <i className="fas fa-building fa-4x"></i>
                 </div>
                 <h6 className="text-uppercase">Total Departments</h6>
                 <h1 className="display-4">{stat.totalDepartments}</h1>
@@ -105,7 +105,7 @@ fetchData()
             <div className="card text-white bg-secondary h-80" style={{border:'white 1px solid',borderRadius:'20px'}}>
               <div className="card-body bg-secondary"  style={{border:'white 1px solid',borderRadius:'20px', backgroundColor: "#428bca" }}>
                 <div className="rotate">
-                  <i className="fa fa-check-circle fa-4x"></i>
+                  <i className="fas fa-briefcase fa-4x"></i>
                 </div>
                 <h6 className="text-uppercase">Total Jobs Available</h6>
                 <h1 className="display-4">{stat.totalJobs}</h1>

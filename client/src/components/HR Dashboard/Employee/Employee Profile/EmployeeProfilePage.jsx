@@ -54,7 +54,7 @@ export default function EmployeeProfilePage() {
                 </MDBCol>
                 <MDBCol md="8">
                   <MDBCardBody style={{fontSize: "16px"}} className="p-4">
-                    <MDBTypography style={{fontSize:"20px"}}>Employee Information</MDBTypography>
+                    <MDBTypography style={{fontSize:"20px"}}>Employee Information</MDBTypography> 
                     <hr className="mt-0 mb-4" />
                     <MDBRow className="pt-2">
                       <MDBCol size="6" className="mb-3">

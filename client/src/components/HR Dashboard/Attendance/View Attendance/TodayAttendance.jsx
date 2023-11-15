@@ -97,7 +97,11 @@ const TodayAttendance = () => {
           >
             <option value={''} style={{ display: 'none' }}>Status</option>
             <option value={''}>All</option>
-            {todayAllAttendance.map((att, index) => { return <option key={index} value={att.status}>{att.status}</option> })}
+            <option value={'Present'}>Present</option>
+            <option value={'Absent'}>Absent</option>
+            <option value={'Leave'}>Leave</option>
+
+           {/* {todayAllAttendance.map((att, index) => { return <option key={index} value={att.status}>{att.status}</option> })}*/}
           </select>
 
         </div>
@@ -107,7 +111,7 @@ const TodayAttendance = () => {
             id="empId"
             placeholder="Search by Employee ID"
             className="form-control round"
-            style={{ width: '296px',marginBottom: '10px',...inputStyle, WebkitAppearance: 'none' }}
+            style={{ width: '304px',marginBottom: '10px',...inputStyle, WebkitAppearance: 'none' }}
             value={filters.empId}
             onChange={(e) => handleFilter('empId', e.target.value)}
           />
@@ -116,7 +120,7 @@ const TodayAttendance = () => {
             id="employeeNameFilter"
             placeholder="Search by Employee Name"
             className="form-control round"
-            style={{ width: '296px', marginBottom: '10px' ,...inputStyle, WebkitAppearance: 'none'}}
+            style={{ width: '304px', marginBottom: '10px' ,...inputStyle, WebkitAppearance: 'none'}}
             value={filters.employeeName}
             onChange={(e) => handleFilter('employeeName', e.target.value)}
           />

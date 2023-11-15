@@ -177,7 +177,7 @@ export default function ApplyPage() {
         </select>
         </InputGroup>
         
-        <InputGroup style={{width:'74.3%'}} className="filter-inputs">
+        <InputGroup style={{width:'69.2%'}} className="filter-inputs">
           <FormControl
             className='formcont'
             type={inputType}

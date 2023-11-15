@@ -127,13 +127,13 @@ export default function MarkAttendance() {
   return (
     <div className="full-content" id="full-content">
       {/* {<h2>{currentTime}</h2>} */}
+      <h2 className="mb-4" style={{ margin: 'auto' }}>Mark Attendance</h2>
 
       <div id="content">
         <Clock />
         {day == 'Sunday' || day == 'Saturday' ?
           (<h4 style={{margin:'auto',backgroundColor:'green',padding:'20px',color:'white'}}>Today is a holiday, Enjoy your day.</h4>) :
           <div>
-        <h2 className="mb-4" style={{ margin: 'auto' }}>Mark Attendance</h2>
         <p>Date: {todayDate}</p>
         <p>Day: {day}</p>
 

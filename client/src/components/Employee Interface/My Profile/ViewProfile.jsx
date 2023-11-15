@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBTypography, MDBIcon } from 'mdb-react-ui-kit';
+
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import './ViewProfile.css';
@@ -31,6 +33,13 @@ export default function ViewProfile() {
   const [password, setPassword] = useState(false)
 
   const [imageURL, setImageURL] = useState(null);
+
+  const [isUploadingImage, setIsUploadingImage] = useState(false);
+
+  const handleEditClick = () => {
+    setEditMode(true); // Enable edit mode
+    setIsUploadingImage(true); // Show image upload button
+  };
 
 
   const [empInfo, setEmpInfo] = useState({});
@@ -186,14 +195,14 @@ export default function ViewProfile() {
           </div>
         </>
       ) : (
-        <div id="full-content">
-          <h2 className="mb-4">Profile</h2>
-          <div id="content">
+        <div id="profile-container" style={{textAlign: "center", marginLeft: "7rem", width:"68%"}}>
+          <h2 style={{fontWeight: "bold", fontFamily: "Noto Sans"}} className="mb-4 mt-4">Profile</h2>
+          <div id="emp-content">
             <div style={{
               margin: 'auto',
               borderRadius: '50%',
-              width: '230px',
-              height: '250px',
+              width: '140px',
+              height: '140px',
               overflow: 'hidden',
               display: 'flex',
               justifyContent: 'center',
@@ -204,11 +213,11 @@ export default function ViewProfile() {
               cursor: 'pointer' // Added cursor style for hover
             }}
               onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.1)'} // Scale up on hover
-              onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'} // Reset scale on hover out
+              onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1.0)'} // Reset scale on hover out
             >
               {imageURL && <img src={imageURL} alt="Img" style={{
-                maxWidth: '60%',
-                maxHeight: '60%',
+                maxWidth: '65%',
+                maxHeight: '65%',
                 transition: 'transform 0.3s ease'
               }} />}
             </div>
@@ -217,9 +226,9 @@ export default function ViewProfile() {
             <div id="flex-content">
               <div id="first-half">
                 {editMode ? (
-                  <>
+                  <div style={{textAlign: "center"}}>
                     <h4>Only This Information is Allowed to change!</h4>
-                    <div className="mb-3 rounded-input">
+                    <div className="mb-3">
                       <label htmlFor="phoneNumber" className="form-label">Phone Number:</label>
                       <input
                         type="number"
@@ -232,7 +241,7 @@ export default function ViewProfile() {
                       />
                     </div>
 
-                    <div className="mb-3 rounded-input">
+                    <div className="mb-3">
                       <label htmlFor="city" className="form-label">City:</label>
                       <input
                         type="text"
@@ -244,7 +253,7 @@ export default function ViewProfile() {
                         required
                       />
                     </div>
-                    <div className="mb-3 rounded-input">
+                    <div className="mb-3">
                       <label htmlFor="address" className="form-label">Address:</label>
                       <input
                         type="text"
@@ -256,11 +265,11 @@ export default function ViewProfile() {
                         required
                       />
                     </div>
-                    <div className="mb-3 rounded-input">
+                    <div className="mb-3">
                       <label htmlFor="zipcode" className="form-label">Zipcode:</label>
                       <input
                         type="text"
-                        className="form-control round"
+                        className="form-control"
                         id="zipcode"
                         name='zipcode'
                         value={updateInfo.zipcode}
@@ -268,6 +277,13 @@ export default function ViewProfile() {
                         required
                       />
                     </div>
+                    <div>
+                    <ImageUpload fetchData={fetchData} />
+                    <p style={{ marginLeft:'500px',color: "red", fontSize: "12px", marginBottom: '-25px' }}>
+        <strong>Only PNG format is allowed for image uploads.</strong>
+      </p>
+      </div>
+
                     <div>
                       <Button variant="success" onClick={() => {
                         // setShowModal(true);
@@ -283,68 +299,91 @@ export default function ViewProfile() {
                       </Button>
                     </div>
 
-                  </>
+                  </div>
                 ) : (
                   <>
-
-                    <Table striped bordered hover>
-                      <tbody>
-                        <tr>
-                          <td className="text-secondary"><strong>ID No.</strong></td>
-                          <td>{empInfo.emp_id}</td>
-                          <td className="text-secondary"><strong>CNIC</strong></td>
-                          <td>{empInfo.cnic}</td>
-                        </tr>
-                        <tr>
-                          <td className="text-secondary"><strong>Full Name </strong></td>
-                          <td style={{textTransform: "capitalize"}}>{empInfo.name}</td>
-                          <td className="text-secondary"><strong>Hire Date</strong></td>
-                          <td>{empInfo.hire_date?.toString().slice(0, 10)}</td>
-                        </tr>
-                        <tr>
-                          <td className="text-secondary"><strong>Email </strong></td>
-                          <td>{empInfo.email}</td>
-                          <td className="text-secondary"><strong>Date of Birth</strong></td>
-                          <td>{empInfo.DOB?.toString().slice(0, 10)}</td>
-                        </tr>
-                        <tr>
-                          <td className="text-secondary"><strong>Ph. #</strong></td>
-                          <td>{empInfo.phone_number}</td>
-                          <td className="text-secondary"><strong>Salary</strong></td>
-                          <td>{empInfo.salary?.toString()?.slice(0, -3)} PKR</td>
-                        </tr>
-                        <tr>
-                          <td className="text-secondary"><strong>City </strong></td>
-                          <td>{empInfo.city}</td>
-                          <td className="text-secondary"><strong>Department</strong></td>
-                          <td>{empInfo.dep_name}</td>
-                        </tr>
-                        <tr>
-                          <td className="text-secondary"><strong>Zip-Code </strong></td>
-                          <td>{empInfo.zipcode}</td>
-                          <td className="text-secondary"><strong>My Job as a</strong></td>
-                          <td>{empInfo.job_name}</td>
-                        </tr>
-                        <tr>
-                          <td className="text-secondary"><strong>Address </strong></td>
-                          <td>{empInfo.address}</td>
-                          <td className="text-secondary"><strong>Gender</strong></td>
-                          <td>{empInfo.gender}</td>
-                        </tr>
-                      </tbody>
-                    </Table>
-                    <div className="button-container">
-                      <Button variant="primary" style={{ width: '200px', height: '40px', marginTop: '5px' }} onClick={() => { setEditMode(true) }}>
+<div style={{textAlign: "center"}}>
+<MDBCardBody style={{marginLeft:"10rem", fontSize: "18px", textAlign:"left"}} className="p-6">
+<MDBRow className="pt-2">
+                      <MDBCol size="6" className="mb-3">
+                        <MDBTypography style={{fontSize:"18px"}}>Full Name</MDBTypography>
+                        <MDBCardText style={{textTransform: "capitalize"}} className="text-muted">{empInfo.name}</MDBCardText> 
+                      </MDBCol>
+                      <MDBCol size="6" className="mb-3">
+                        <MDBTypography style={{fontSize:"18px"}}>Job Position</MDBTypography>
+                        <MDBCardText className="text-muted">{empInfo.job_name}</MDBCardText>
+                      </MDBCol>
+                    </MDBRow>
+                    <MDBRow className="pt-2">
+                      <MDBCol size="6" className="mb-3">
+                        <MDBTypography style={{fontSize:"18px"}}>Employee ID</MDBTypography>
+                        <MDBCardText className="text-muted">{empInfo.emp_id}</MDBCardText> 
+                      </MDBCol>
+                      <MDBCol size="6" className="mb-3">
+                        <MDBTypography style={{fontSize:"18px"}}>CNIC</MDBTypography>
+                        <MDBCardText className="text-muted">{empInfo.cnic}</MDBCardText>
+                      </MDBCol>
+                    </MDBRow>
+                    <MDBRow className="pt-2">
+                      <MDBCol size="6" className="mb-3">
+                        <MDBTypography style={{fontSize:"18px"}}>Email</MDBTypography>
+                        <MDBCardText className="text-muted">{empInfo.email}</MDBCardText> 
+                      </MDBCol>
+                      <MDBCol size="6" className="mb-3">
+                        <MDBTypography style={{fontSize:"18px"}}>Phone</MDBTypography>
+                        <MDBCardText className="text-muted">{empInfo.phone_number}</MDBCardText>
+                      </MDBCol>
+                    </MDBRow>
+                    <MDBRow className="pt-2">
+                      <MDBCol size="6" className="mb-3">
+                        <MDBTypography style={{fontSize:"18px"}}>Department</MDBTypography>
+                        <MDBCardText className="text-muted">{empInfo.dep_name}</MDBCardText>
+                      </MDBCol>
+                      <MDBCol size="6" className="mb-3">
+                        <MDBTypography style={{fontSize:"18px"}}>Gender</MDBTypography>
+                        <MDBCardText className="text-muted">{empInfo.gender}</MDBCardText>
+                      </MDBCol>
+                    </MDBRow>
+                    <MDBRow className="pt-2">
+                      <MDBCol size="6" className="mb-3">
+                        <MDBTypography style={{fontSize:"18px"}}>Salary</MDBTypography>
+                        <MDBCardText className="text-muted">{empInfo.salary?.toString()?.slice(0, -3)} PKR</MDBCardText>
+                      </MDBCol>
+                      <MDBCol size="6" className="mb-3">
+                        <MDBTypography style={{fontSize:"18px"}}>Hire Date</MDBTypography>
+                        <MDBCardText className="text-muted">{empInfo.hire_date?.toString()?.slice(0, 10)}</MDBCardText>
+                      </MDBCol>
+                    </MDBRow>
+                    <MDBRow className="pt-2">
+                      <MDBCol size="6" className="mb-3">
+                        <MDBTypography style={{fontSize:"18px"}}>City</MDBTypography>
+                        <MDBCardText className="text-muted">{empInfo.city}</MDBCardText>
+                      </MDBCol>
+                      <MDBCol size="6" className="mb-3">
+                        <MDBTypography style={{fontSize:"18px"}}>Date of Birth</MDBTypography>
+                        <MDBCardText className="text-muted">{empInfo.DOB?.toString().slice(0, 10)}</MDBCardText>
+                      </MDBCol>
+                    </MDBRow>
+                    <MDBRow className="pt-2">
+                      <MDBCol size="6" className="mb-3">
+                        <MDBTypography style={{fontSize:"18px"}}>Address</MDBTypography>
+                        <MDBCardText className="text-muted">{empInfo.address}</MDBCardText>
+                      </MDBCol>
+                      <MDBCol size="6" className="mb-3">
+                        <MDBTypography style={{fontSize:"18px"}}>Zip code</MDBTypography>
+                        <MDBCardText className="text-muted">{empInfo.zipcode}</MDBCardText>
+                      </MDBCol>
+                    </MDBRow>
+                  </MDBCardBody>
+                    <div className="button-container" style={{display:"flex", justifyContent:"center"}}>
+                      <Button variant="primary" style={{ width: '110px', height: '38px', marginTop: '5px', marginRight:"0.5rem" }} onClick={() => { setEditMode(true) }}>
                         Edit Profile
                       </Button>
-                      <Link style={{ width: '200px', marginLeft: '-40px', marginTop: '5px' }} to="/empdash/viewProfile/resetPassword">
+                      <Link style={{ width: '135px', marginTop: '5px', marginRight:"2rem" }} to="/empdash/viewProfile/resetPassword">
                         <Button variant="danger">Reset Password</Button>
                       </Link>
-                      <ImageUpload fetchData={fetchData} />
                     </div>
-                    <p style={{ marginLeft:'500px',color: "red", fontSize: "12px", marginBottom: '-25px' }}>
-        <strong>Only PNG format is allowed for image uploads.</strong>
-      </p>
+      </div>
                   </>
                 )}
               </div>

@@ -8,12 +8,29 @@ font-size: large;
 padding: 25px;
 }
 
-#content{
+#emp-content{
 
-padding: 15px !important;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-content: center;
+padding: 10px !important;
+background: linear-gradient(to bottom, #00D2FF, #2EDAFF, #50E0FF, #9BEDFF);
+border: 3px solid #20B9DC;
+border-radius: 12px;
+
+margin-bottom: 2rem;
+/*background-color: #05D3FF;*/
 
 }
 
+#profile-container{
+
+  text-align: center;
+   margin-left: "7rem";
+   width:"68%";
+
+}
 
 /* CSS */
 .profile-image-container {

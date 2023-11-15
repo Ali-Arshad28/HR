@@ -8,7 +8,7 @@ import axios from 'axios';
 
 const AttendanceRecord = () => {
   const [attendance, setAttendance] = useState([]);
-  useEffect(() => {
+  useEffect(() => { 
     const fetchData = async () => {
       try {
         const response = await axios.get(BaseUrl + `/attendanceRecord`, config)
