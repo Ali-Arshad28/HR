@@ -1206,7 +1206,6 @@ router.put("/updateEmployeeInfo", verifyToken, checkUserRole(2), async (req, res
 router.get("/empLeaveHistory", verifyToken, checkUserRole(2), (req, res) => {
   console.log("/employeeLeaveHistory");
   const { emp_id } = req.user;
-
   console.log("Employee ID: " + emp_id);
 
   mysql.query(`CALL employeeLeaveHistory(${emp_id})`, (err, result) => {

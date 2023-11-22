@@ -1,7 +1,7 @@
 export const BaseUrl = 'http://localhost:3002';
 export const employeeId = 121;
 export const start_time = "10:0:0"
-export const end_time = "11:40:0"
+export const end_time = "11:30:0"
 // const jwtToken = Cookies.get('jwtToken');//jwtToken:user_id, role_id,emp_id
 // export const config = {
 //     headers: {

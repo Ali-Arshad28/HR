@@ -106,7 +106,7 @@ export default function EmployeeDashboard() {
               <div className="rotate">
                 <i class="fas fa-credit-card fa-4x"></i>
               </div>
-              <h3>Salary/month  <br/><strong>{empStats.netSalary}</strong></h3>
+              <h3>Salary per month<br/><strong>{Math.floor(empStats.netSalary)}</strong></h3>
             </div>
           </div>
         <div className="col-xl-4 col-sm-6 py-2">
@@ -143,7 +143,7 @@ export default function EmployeeDashboard() {
             <div className="card-body" style={{width: "35rem", textAlign:"center", backgroundColor: 'white', padding:"4px" , fontSize:"8px", margin:'auto', border:'black 1.5px solid',borderRadius:'20px' }}>
 {salDet.salary_status == "Paid" ? <> <h5 style={{display:'inline'}}>Current Month Salary Status</h5><span style={{marginLeft: "8px", fontSize:'20px'}} className='badge bg-success'>{salDet.salary_status}</span>
                 <h6>Salary Approval Date : <strong>{salDet?.salary_date?.slice(0, 10)}</strong></h6>
-                <h6>Amount Paid : <strong>{salDet.salary_amount}</strong></h6></>
+                <h6>Amount Paid : <strong>{Math.floor(salDet.salary_amount)}</strong></h6></>
                 : <><h6 style={{display:'inline'}}>Current Month Salary Status</h6><span style={{marginLeft: "8px", fontSize:'20px'}} className='badge bg-danger'>{salDet.salary_status}</span></>}</div>
           </div>
 

@@ -305,71 +305,71 @@ export default function ViewProfile() {
 <div style={{textAlign: "center"}}>
 <MDBCardBody style={{marginLeft:"10rem", fontSize: "18px", textAlign:"left"}} className="p-6">
 <MDBRow className="pt-2">
-                      <MDBCol size="6" className="mb-3">
+                      <MDBCol size="6" className="mb-1">
                         <MDBTypography style={{fontSize:"18px"}}>Full Name</MDBTypography>
                         <MDBCardText style={{textTransform: "capitalize"}} className="text-muted">{empInfo.name}</MDBCardText> 
                       </MDBCol>
-                      <MDBCol size="6" className="mb-3">
+                      <MDBCol size="6" className="mb-1">
                         <MDBTypography style={{fontSize:"18px"}}>Job Position</MDBTypography>
                         <MDBCardText className="text-muted">{empInfo.job_name}</MDBCardText>
                       </MDBCol>
                     </MDBRow>
                     <MDBRow className="pt-2">
-                      <MDBCol size="6" className="mb-3">
+                      <MDBCol size="6" className="mb-1">
                         <MDBTypography style={{fontSize:"18px"}}>Employee ID</MDBTypography>
                         <MDBCardText className="text-muted">{empInfo.emp_id}</MDBCardText> 
                       </MDBCol>
-                      <MDBCol size="6" className="mb-3">
+                      <MDBCol size="6" className="mb-1">
                         <MDBTypography style={{fontSize:"18px"}}>CNIC</MDBTypography>
                         <MDBCardText className="text-muted">{empInfo.cnic}</MDBCardText>
                       </MDBCol>
                     </MDBRow>
                     <MDBRow className="pt-2">
-                      <MDBCol size="6" className="mb-3">
+                      <MDBCol size="6" className="mb-1">
                         <MDBTypography style={{fontSize:"18px"}}>Email</MDBTypography>
                         <MDBCardText className="text-muted">{empInfo.email}</MDBCardText> 
                       </MDBCol>
-                      <MDBCol size="6" className="mb-3">
+                      <MDBCol size="6" className="mb-1">
                         <MDBTypography style={{fontSize:"18px"}}>Phone</MDBTypography>
                         <MDBCardText className="text-muted">{empInfo.phone_number}</MDBCardText>
                       </MDBCol>
                     </MDBRow>
                     <MDBRow className="pt-2">
-                      <MDBCol size="6" className="mb-3">
+                      <MDBCol size="6" className="mb-1">
                         <MDBTypography style={{fontSize:"18px"}}>Department</MDBTypography>
                         <MDBCardText className="text-muted">{empInfo.dep_name}</MDBCardText>
                       </MDBCol>
-                      <MDBCol size="6" className="mb-3">
+                      <MDBCol size="6" className="mb-1">
                         <MDBTypography style={{fontSize:"18px"}}>Gender</MDBTypography>
                         <MDBCardText className="text-muted">{empInfo.gender}</MDBCardText>
                       </MDBCol>
                     </MDBRow>
                     <MDBRow className="pt-2">
-                      <MDBCol size="6" className="mb-3">
+                      <MDBCol size="6" className="mb-1">
                         <MDBTypography style={{fontSize:"18px"}}>Salary</MDBTypography>
                         <MDBCardText className="text-muted">{empInfo.salary?.toString()?.slice(0, -3)} PKR</MDBCardText>
                       </MDBCol>
-                      <MDBCol size="6" className="mb-3">
+                      <MDBCol size="6" className="mb-1">
                         <MDBTypography style={{fontSize:"18px"}}>Hire Date</MDBTypography>
                         <MDBCardText className="text-muted">{empInfo.hire_date?.toString()?.slice(0, 10)}</MDBCardText>
                       </MDBCol>
                     </MDBRow>
                     <MDBRow className="pt-2">
-                      <MDBCol size="6" className="mb-3">
+                      <MDBCol size="6" className="mb-1">
                         <MDBTypography style={{fontSize:"18px"}}>City</MDBTypography>
                         <MDBCardText className="text-muted">{empInfo.city}</MDBCardText>
                       </MDBCol>
-                      <MDBCol size="6" className="mb-3">
+                      <MDBCol size="6" className="mb-1">
                         <MDBTypography style={{fontSize:"18px"}}>Date of Birth</MDBTypography>
                         <MDBCardText className="text-muted">{empInfo.DOB?.toString().slice(0, 10)}</MDBCardText>
                       </MDBCol>
                     </MDBRow>
                     <MDBRow className="pt-2">
-                      <MDBCol size="6" className="mb-3">
+                      <MDBCol size="6" className="mb-1">
                         <MDBTypography style={{fontSize:"18px"}}>Address</MDBTypography>
                         <MDBCardText className="text-muted">{empInfo.address}</MDBCardText>
                       </MDBCol>
-                      <MDBCol size="6" className="mb-3">
+                      <MDBCol size="6" className="mb-1">
                         <MDBTypography style={{fontSize:"18px"}}>Zip code</MDBTypography>
                         <MDBCardText className="text-muted">{empInfo.zipcode}</MDBCardText>
                       </MDBCol>

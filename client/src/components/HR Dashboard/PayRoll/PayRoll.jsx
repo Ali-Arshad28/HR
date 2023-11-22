@@ -92,7 +92,7 @@ const PayRoll = () => {
         console.log(empDetail.emp_id, empDetail.netSalary);
 
        const filteredEmp=AttforPayRoll.find((emp) => emp.emp_id === empDetail.emp_id);
-       const calculatedSalary=(((empDetail.netSalary)/21)*filteredEmp.present_days).toFixed(2);
+       const calculatedSalary=(((empDetail.netSalary)/22)*filteredEmp.present_days).toFixed(0);
         console.log(calculatedSalary);
         const response = await axios.post(BaseUrl + '/approveSalary', { empId: empDetail.emp_id, empSal: calculatedSalary }, config);
         if (response.data.success) {
@@ -253,9 +253,9 @@ const PayRoll = () => {
                             <td>{calculateCellValue(employee)}</td> */}
 
                             <td>{employee.performanceScore}</td>
-                            <td>{employee.Bonus}</td>
-                            <td>{employee.Tax}</td>
-                            <td>{employee.netSalary}</td>
+                            <td>{Math.floor(employee.Bonus)}</td>
+                            <td>{Math.floor(employee.Tax)}</td>
+                            <td>{Math.floor(employee.netSalary)}</td>
 
                             <td>{employee.salary_status === 'Paid'
                                 ? (<span className="badge bg-success">Paid</span>)
@@ -382,7 +382,7 @@ const PayRoll = () => {
                 <Modal.Body>
                     Are you sure you want to approve the salary of {empDetail.name}?
                     <br />
-                    Net Salary = {empDetail.netSalary}/month
+                    Net Salary = {Math.floor(empDetail.netSalary)}/month
                     {AttforPayRoll.filter((emp) => emp.emp_id === empDetail.emp_id).map((filteredEmp) => (
                         <div key={filteredEmp.emp_id}>
                             Current Month Presents: {filteredEmp.present_days}
@@ -391,7 +391,7 @@ const PayRoll = () => {
                             <br />
                             Current Month Leaves: {filteredEmp.leave_days}
                             <br />
-                            Calculated Salary on the base of Working Days: {((empDetail.netSalary/21)*filteredEmp.present_days).toFixed(2)} 
+                            Calculated Salary on the base of Working Days: {((empDetail.netSalary/22)*filteredEmp.present_days).toFixed(0)} 
                         </div>
                     ))}
                 </Modal.Body>

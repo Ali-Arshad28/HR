@@ -32,7 +32,7 @@ const AttendanceRecord = () => {
   });
 
   const [currentPage, setCurrentPage] = useState(0);
-  const [itemsPerPage, setItemsPerPage] = useState(2);
+  const [itemsPerPage, setItemsPerPage] = useState(5);
 
   const filteredAttendance = attendance
     .filter((emp) => emp?.status?.toLowerCase()?.includes(filters.status.toLowerCase()))
